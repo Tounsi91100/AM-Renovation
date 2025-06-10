@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rénovation Intérieure</title>
+  <style>
+    .intro {
+  padding: 3rem 1rem;
+  background-color: #f4f1ee;
+  text-align: center;
+}
+.intro-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1rem; /* un peu d'espace sur les côtés */
+}
+
+.intro-content h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.intro-content p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+.intro-content button {
+  padding: 0.8rem 2rem;
+  background-color: #C5A562;
+  border: none;
+  border-radius: 4px;
+  color: #313029;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.intro-content button:hover {
+  background-color: #a78d48;
+}
+
+@media (max-width: 768px) {
+  .intro-content h2 {
+    font-size: 2rem;
+  }
+  .intro-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  header {
+    height: 350px;
+  }
+  .intro-content h2 {
+    font-size: 1.5rem;
+  }
+  .intro-content p {
+    font-size: 0.9rem;
+  }
+}
+
+.intro-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.intro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #242c30;
+}
+.intro p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+.intro button {
+  padding: 0.8rem 2rem;
+  background-color: #BFA188;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.intro button:hover {
+  background-color: #a78d48;
+}
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #CCCAC0;
+      color: #313029;
+    }
+
+    /* Header avec image + fond sombre */
+    header {
+      position: relative;
+      height: 500px;
+      background-image: url('images/cuisine moderne.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+    header h1 {
+      position: relative;
+      color: #C5A562;
+      z-index: 1;
+      font-size: 3.5rem;
+      margin: 0;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+    }
+
+    /* Slider container */
+    .services-slider {
+      position: relative;
+      width: 100vw;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      position: relative;
+      min-width: 100vw;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      flex-shrink: 0;
+      color: #f9f6f1 ;
+      display: flex;
+      align-items: flex-end;
+      padding: 30px;
+    }
+
+    /* Fond sombre derrière texte dans slide */
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(42, 41, 41, 0.5);
+      z-index: 0;
+    }
+
+    .slide h2 {
+      position: relative;
+      margin: 0;
+      font-size: 3rem;
+      z-index: 1;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+
+    /* Flèches navigation */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(197, 165, 98, 0.7);
+      border: none;
+      color: #313029;
+      font-size: 3rem;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      border-radius: 50%;
+      user-select: none;
+      transition: background 0.3s ease;
+      z-index: 10;
+    }
+    .nav-btn:hover {
+      background: rgba(181, 150, 54, 0.9);
+    }
+    .prev-btn {
+      left: 10px;
+    }
+    .next-btn {
+      right: 10px;
+    }
+
+    /* Contact (inchangé) */
+    .contact {
+      background-color: #fff;
+      padding: 3rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      border-top: 1px solid #ddd;
+    }
+    .contact h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #333;
+    }
+    .contact form {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact label {
+      margin: 0.5rem 0 0.2rem;
+      font-weight: bold;
+      color: #444;
+    }
+    .contact input,
+    .contact textarea {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .contact button {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      font-size: 1.1rem;
+      background-color: #C5A562;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .contact button:hover {
+      background-color: #a78d48;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .slide h2 {
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: 400px) {
+      header {
+        height: 350px;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+    .about-company {
+  max-width: 900px;
+  margin: 2rem auto 4rem;
+  padding: 0 1rem;
+  color: #313029;
+  font-family: 'Helvetica Neue', sans-serif;
+  text-align: center;
+}
+
+.about-company h2 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #313029;
+}
+
+.about-company p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  text-align: left;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  flex: 1 1 280px;
+  min-width: 280px;
+  background: #ceb379;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgb(197 165 98 / 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.feature:hover {
+  box-shadow: 0 4px 12px rgb(197 165 98 / 0.6);
+}
+
+.icon {
+  font-size: 2.5rem;
+  color: #313029;
+  margin-right: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.feature h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #313029;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.feature p {
+  margin: 0;
+  font-size: 1rem;
+  color: #313029;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .feature {
+    max-width: 90vw;
+  }
+}
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  text-align: left;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.feature {
+  flex: 1 1 250px;
+  min-width: 250px;
+  
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.feature.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature .icon {
+  font-size: 2.5rem;
+  color: #313029;
+  min-width: 40px;
+  margin-top: 0.2rem;
+}
+
+.feature .text h3 {
+  margin: 0 0 0.5rem 0;
+  color: #313029;
+}
+
+.feature .text p {
+  margin: 0;
+  color: #313029;
+}
+.site-footer {
+  background-color: #313029;
+  color: #CCCAC0;
+  padding: 1.5rem 1rem;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 0.9rem;
+}
+
+.footer-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-info p {
+  margin: 0.3rem 0;
+}
+
+.footer-info a {
+  color: #C5A562;
+  text-decoration: none;
+}
+
+.footer-info a:hover {
+  text-decoration: underline;
+}
+
+.footer-social a {
+  color: #C5A562;
+  margin-left: 1rem;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: #C5A562;
+}
+.contact-section {
+  background-color: #F5F2E7;
+  padding: 4rem 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  color: #313029;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.contact-section p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.typeform-button {
+  display: inline-block;
+  background-color: #a78d48;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.typeform-button:hover {
+  background-color: #a88768;
+}
+.nav-btn i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 30%;
+}
+
+
+/* Responsive */
+@media (max-width: 600px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .footer-social {
+    margin-top: 1rem;
+  }
+  
+  .footer-social a {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+  
+}
+.feature {
+  cursor: pointer;
+}
+.intro-content-button {
+  padding: 0.8rem 2rem;
+  background-color: #C5A562;
+  border: none;
+  border-radius: 4px;
+  color: #313029;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.intro-content-button:hover {
+  background-color: #a78d48;
+}
+.swiper {
+  width: 100%;
+  height: 100vh;
+}
+
+.swiper-slide {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.554); /* gris foncé avec transparence */
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 600px;
+}
+
+.overlay h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-slide {
+  background-color: #D6BE90;
+  color: #000000;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.btn-slide:hover {
+  background-color: #ffffff;
+  color: white;
+}
+
+/* Custom arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+
+  </style>
+</head>
+
+<body>
+  <script>
+    function revealOnScroll() {
+      const features = document.querySelectorAll('.feature');
+      const windowHeight = window.innerHeight;
+  
+      features.forEach(feature => {
+        const elementTop = feature.getBoundingClientRect().top;
+        const revealPoint = 150;
+  
+        if (elementTop < windowHeight - revealPoint) {
+          feature.classList.add('visible');
+        }
+      });
+
+    }
+  
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+  <!-- Image principale avec titre -->
+  <header>
+    
+    <div class="intro-content">
+      <h2>Bienvenue chez AM Renovation</h2>
+      <p>Experts en rénovation intérieure, nous transformons votre habitat selon vos envies.</p>
+      <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })">
+        Voir nos services      
+      </button>
+    </div>
+  </header>  
+
+  <section id="about" class="about-company">
+    <h2>Entreprise de Rénovation</h2>
+    <p>
+      Basée à <strong>Corbeil-Essonnes</strong>, <strong>AM Rénovation</strong> réalise tous vos travaux de rénovation intérieure, second œuvre, peinture et plus encore.  
+      Nous intervenons sur l'ensemble de la région <em>Île-de-France</em>.
+    </p>
+  
+    <div class="features">
+      <div class="feature" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">
+        <div class="icon"><i class="fa-solid fa-wrench"></i></div>
+        <div class="text">
+          <h3>Devis sous 24h</h3>
+          <p>Réponse rapide pour un devis clair et sans surprise, pour que vous puissiez avancer sereinement</p>
+        </div>
+      </div>
+  
+      <div class="feature" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">
+        <div class="icon"><i class="fa-solid fa-user-check"></i></div>
+        <div class="text">
+          <h3>Interlocuteur unique</h3>
+          <p>Un contact dédié vous accompagne tout au long du projet, disponible et à votre écoute</p>
+        </div>
+      </div>
+  
+      <div class="feature" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">
+        <div class="icon"><i class="fa-solid fa-clock"></i></div>
+        <div class="text">
+          <h3>Respect des délais</h3>
+          <p>Pour votre sérénité et un chantier sans stress</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+
+  <!-- Slider des services -->
+  <section class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 : Cuisine -->
+      <div class="swiper-slide slide" style="background-image: url('images/cuisine.jpg');">
+        <div class="overlay">
+          <h2>Rénovation de cuisine</h2>
+          <p>Un espace fonctionnel et moderne sur mesure</p>
+          <button class="btn-slide scroll-to-contact">Commencer maintenant</button>
+        </div>
+      </div>
+      
+      <!-- Slide 2 : Salle de bain -->
+      <div class="swiper-slide slide" style="background-image: url('images/bain.jpg');">
+        <div class="overlay">
+          <h2>Salle de bain </h2>
+          <p>Confort, esthétique et fonctionnalité</p>
+          <button class="btn-slide scroll-to-contact">Commencer maintenant</button>
+        </div>
+      </div>
+    
+      <!-- Slide 3 : Fenêtres / Portes -->
+      <div class="swiper-slide slide" style="background-image: url('images/porte.jpg');">
+        <div class="overlay">
+          <h2>Fenêtres & portes</h2>
+          <p>Isolation, sécurité et design réunis</p>
+          <button class="btn-slide scroll-to-contact">Commencer maintenant</button>
+        </div>
+      </div>
+       <!-- Slide 4 : Peinture -->
+      <div class="swiper-slide slide" style="background-image: url('images/peinture.jpg');">
+        <div class="overlay">
+          <h2>Travaux de peinture</h2>
+          <p>Finitions nettes et couleurs selon vos envies</p>
+          <button class="btn-slide scroll-to-contact">Commencer maintenant</button>
+        </div>
+      </div>
+    </div>
+    <!-- Flèches -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  
+    <!-- Dots -->
+    <div class="swiper-pagination"></div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact-section">
+    <div class="contact-content">
+      <h2>Contactez-nous</h2>
+      <p>Vous avez un projet ? Remplissez notre formulaire ci-dessous pour obtenir un devis rapidement.</p>
+      <div class="text-center my-8">
+        <button id="show-typeform" class="intro-content-button">
+          Demande de devis
+        </button>       
+      </div>
+      <div id="typeform-container" style="display: none;">
+      
+    </div>
+  </section>
+  <script>
+    document.getElementById('show-typeform').addEventListener('click', function () {
+      const container = document.getElementById('typeform-container');
+  
+      // Crée dynamiquement l’iframe SEULEMENT après le clic
+      const iframe = document.createElement('iframe');
+      iframe.src = "https://form.typeform.com/to/aGBkpwgr";
+      iframe.style.width = "100%";
+      iframe.style.height = "600px";
+      iframe.style.border = "none";
+      iframe.setAttribute("allow", "camera; microphone; autoplay; encrypted-media");
+  
+      container.appendChild(iframe);
+      container.style.display = "block";
+      
+      // Cache le bouton
+      this.style.display = "none";
+    });
+  </script>
+  
+  
+  
+  <!-- Script slider -->
+  <script>
+    const slides = document.querySelector('.slides');
+    const slideCount = document.querySelectorAll('.slide').length;
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentIndex = 0;
+
+    function updateSlider() {
+      slides.style.transform = `translateX(-${currentIndex * 100}vw)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+      updateSlider();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slideCount;
+      updateSlider();
+    });
+
+    // Optionnel : swipe automatique (désactivé par défaut)
+    // setInterval(() => {
+    //   nextBtn.click();
+    // }, 5000);
+  </script>
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-info">
+      <p>&copy; 2025 AM Rénovation. Tous droits réservés.</p>
+      <p>Ville : Corbeil-Essonnes</p>
+      <p>Téléphone : <a href="tel:+33123456789">01 23 45 67 89</a></p>
+      <p>Email : <a href="mailto:contact@entreprise.com">contact@entreprise.com</a></p>
+    </div>
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</footer>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  // Initialisation du slider Swiper
+  const swiper = new Swiper(".mySwiper", {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true,
+    }
+  });
+
+  // Scroll fluide vers la section contact depuis les boutons des slides
+  document.querySelectorAll('.scroll-to-contact').forEach(button => {
+    button.addEventListener('click', () => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+<script>
+  document.querySelectorAll('.scroll-to-contact').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
